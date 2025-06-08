@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('Packages'){
             steps {
-                sh 'npm install mocha chai'
+                sh 'npm install mocha chai@4.3.10'
             }
         }
         stage ('Test'){
