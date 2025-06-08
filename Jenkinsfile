@@ -3,10 +3,20 @@ pipeline {
     stages {
         stage ('Packages'){
             steps {
-                sh 'npm install mocha chai@4.3.10'
+                sh 'npm install mocha chai@4.3.10 eslint'
             }
         }
-        stage ('Test'){
+	    stage('Lint') {
+            steps {
+                sh 'npx eslint . --format checkstyle --output-file eslint-report.xml'
+            }
+            post {
+                always {
+                    recordIssues enabledForFailure: true, tools: [esLint(pattern: 'eslint-report.xml')]
+                }
+            }
+        }
+                stage ('Test'){
             steps {
                 sh 'npm run test'
             }
