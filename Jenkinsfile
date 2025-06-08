@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+        stage ('Packages'){
+            steps {
+                sh 'npm install mocha'
+            }
+        }
         stage ('Test'){
             steps {
                 sh 'npm run test'
