@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('Packages'){
             steps {
-                sh 'npm install-D mocha chai@4.3.10 eslint eslint-formatter-checkstyle'
+                sh 'npm install -D mocha chai@4.3.10 eslint eslint-formatter-checkstyle'
             }
         }
 	    stage('Lint') {
